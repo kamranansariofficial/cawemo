@@ -1,9 +1,150 @@
-.header{
+@font-face {
+  font-family: IBMPlexSans-Bold;
+  src: url("./components/assets/fonts/IBMPlexSans-Bold.ttf");
+}
+@font-face {
+  font-family: IBMPlexSans-Light;
+  src: url("./components/assets/fonts/IBMPlexSans-Light.ttf");
+}
+@font-face {
+  font-family: IBMPlexSans-Medium;
+  src: url("./components/assets/fonts/IBMPlexSans-Medium.ttf");
+}
+@font-face {
+  font-family: IBMPlexSans-Regular;
+  src: url("./components/assets/fonts/IBMPlexSans-Regular.ttf");
+}
+body {
+  font-family: IBMPlexSans-Regular;
+  background-color: #f7f7f7;
+}
+.ant-layout-header {
+  height: 48px;
+  padding: 0 20px;
+  line-height: 54px;
+  background: #fff;
+  border-bottom: 1px solid hsl(0, 0%, 87%);
+}
+.ant-layout-header a.logo {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  color: hsl(0, 0%, 23%);
+  border-right: 1px solid hsl(0, 0%, 87%);
+  padding-right: 16px;
+}
+.ant-layout-header a.home {
+  color: hsl(0, 0%, 23%);
+  font-size: 15;
+  font-family: IBMPlexSans-Medium;
+  margin-left: 16px;
+  transform: translate(0px, -2px);
+  display: inline-block;
+}
+.nav-menu {
+  float: right;
+  color: hsl(0, 0%, 23%);
+  font-family: IBMPlexSans-Medium;
+}
+.ant-dropdown-menu-title-content a {
+  color: hsl(0, 0%, 23%);
+  font-family: IBMPlexSans-Medium;
+}
+.ant-dropdown-menu-title-content a p {
+  margin-bottom: 0px;
+}
+.nav-menu .anticon {
+  padding-left: 14px;
+}
+.line-48 {
+  line-height: 48px;
+}
+.user-section h2 {
   display: flex;
   align-items: center;
-  height: 40px;
-  background: #fff;
+  font-size: 19px;
+  font-family: IBMPlexSans-Regular;
 }
-.nav-brand{
-  border-right: 1px solid #000;
+.user-section h2 span {
+  margin-right: 20px;
+  background-color: #4f588d;
+}
+.user-project {
+  background-color: #f7f7f7;
+  padding-top: 50px;
+  border-top: 1px solid hsl(0, 0%, 87%);
+}
+.container {
+  padding: 0 70px;
+}
+.user-section {
+  padding: 40px 70px;
+  background-color: #fff;
+}
+.icon-button {
+  background: transparent;
+  border-color: transparent;
+  color: black;
+  box-shadow: none;
+}
+.float-right {
+  float: right;
+}
+.pt-10 {
+  padding-top: 50px;
+}
+.table-header {
+  display: flex;
+  align-items: center;
+}
+.table-header button {
+  margin-left: 10px;
+  font-family: IBMPlexSans-Bold;
+  font-size: 14px;
+  color: #fff;
+}
+.table-header button.icon-button{
+  color: #3b3b3b;
+}
+.table-header button.icon-button:hover{
+  color: #fff;
+}
+.pb-5 {
+  padding-bottom: 25px;
+}
+.ant-table-thead > tr > th,
+.ant-table-thead th.ant-table-column-sort,
+.ant-table-thead th.ant-table-column-has-sorters:hover {
+  background: #f7f7f7;
+}
+.ml-auto {
+  margin-left: auto;
+}
+.ant-table-row .ant-checkbox-wrapper,
+.ant-table-thead .ant-checkbox-wrapper {
+  opacity: 0;
+}
+.ant-table-row:hover .ant-checkbox-wrapper,
+.ant-table-row .ant-checkbox-wrapper-checked,
+.ant-table-thead .ant-checkbox-wrapper-checked,
+.ant-table-thead:hover .ant-checkbox-wrapper {
+  opacity: 1;
+}
+.table-main .ant-table-row svg {
+  font-size: 25px;
+  fill: #3b3b3b;
+  margin-top: 10px;
+}
+.table-header .ant-btn-secondary{
+  color: #3b3b3b!important;
+}
+.table-main p.name{
+  font-size: 12px;
+  color: #808080;
+  margin-bottom: 0px;
+}
+.table-main p.value{
+  font-size: 15px;
+  color: #3b3b3b;
+  font-family: IBMPlexSans-Medium;
+  margin-bottom: 0px;
 }

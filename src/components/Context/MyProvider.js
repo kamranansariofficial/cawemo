@@ -1,24 +1,21 @@
-import React, { Component } from 'react'
+import React, { useState } from "react";
+import MyContext from "./MyContext";
 
-import MyContext from './MyContext';
+export default function MyProvider(props) {
+  const [state, setstate] = useState({
+    loading: false,
+  });
 
-export default class MyProvider extends Component {
-    state = {
-        loading: false,
-    };
-
-    render() {
-        return (
-            <MyContext.Provider
-                value={{
-                    loading: this.state.loading,
-                    onLoading: val => {
-                        this.setState({loading: true})
-                    },
-                }}
-            >
-                {this.props.children}
-            </MyContext.Provider>
-        );
-    }
+  return (
+    <MyContext.Provider
+      value={{
+        loading: state.loading,
+        onLoading: (val) => {
+          setstate({ ...state, loading: true });
+        },
+      }}
+    >
+      {props.children}
+    </MyContext.Provider>
+  );
 }
