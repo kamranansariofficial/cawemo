@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import { Table, Button, Menu, Dropdown } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import { DownOutlined } from "@ant-design/icons";
+import MyContext from "../../Context/MyContext";
+import { useHistory } from "react-router-dom";
 
 const columns = [
   {
@@ -20,7 +22,7 @@ const columns = [
   },
   {
     title: "Content",
-    dataIndex: "chinese",
+    dataIndex: "length",
     sorter: {
       compare: (a, b) => a.chinese - b.chinese,
       multiple: 3,
@@ -28,7 +30,7 @@ const columns = [
   },
   {
     title: "Last Changed",
-    dataIndex: "math",
+    dataIndex: "date",
     sorter: {
       compare: (a, b) => a.math - b.math,
       multiple: 2,
@@ -36,7 +38,7 @@ const columns = [
   },
   {
     title: "Collaborators",
-    dataIndex: "english",
+    dataIndex: "collaborator",
   },
 ];
 
@@ -49,40 +51,7 @@ const folderIcon = (
   </svg>
 );
 
-const data = [
-  {
-    key: "1",
-    icon: folderIcon,
-    name: <><p className="name">name</p><p className="value">Jim Green</p></>,
-    chinese: 98,
-    math: 60,
-    english: 70,
-  },
-  {
-    key: "2",
-    icon: folderIcon,
-    name:<><p className="name">name</p><p className="value">Jim Green</p></>,
-    chinese: 98,
-    math: 66,
-    english: 89,
-  },
-  {
-    key: "3",
-    icon: folderIcon,
-    name:<><p className="name">name</p><p className="value">Jim Green</p></>,
-    chinese: 98,
-    math: 90,
-    english: 70,
-  },
-  {
-    key: "4",
-    icon: folderIcon,
-    name:<><p className="name">name</p><p className="value">Jim Green</p></>,
-    chinese: 88,
-    math: 99,
-    english: 89,
-  },
-];
+
 
 const menu = (
   <Menu>
@@ -99,10 +68,9 @@ export default function TableComponent() {
   const [state, setstate] = useState({
     selected: [],
   });
+const {mstate,setMstate} = useContext(MyContext)
 
-  const onChange = (pagination, filters, sorter, extra) => {
-    console.log("params", pagination, filters, sorter, extra);
-  };
+const history = useHistory();
 
   const rowSelection = {
     onChange: (selectedRowKeys, selectedRows) => {
@@ -140,19 +108,25 @@ export default function TableComponent() {
               </Button>
             </Dropdown>
           )}
-          <Button type={state.selected.length > 0 ? "secondary":"primary"} size="large">
+          <Button onClick={()=> {setMstate({...mstate,rename:true});return history.push(`/project/${Math.random()}`)}} type={state.selected.length > 0 ? "secondary":"primary"} size="large">
             Add project
           </Button>
         </span>
       </h2>
       <Table
       size="small"
+      showSorterTooltip={false}
+      onRow={(record, rowIndex) => {
+        return {
+          onClick: event =>
+        history.push(`project/${record.id}`)
+        }}}
         columns={columns}
         rowSelection={{
           ...rowSelection,
         }}
-        dataSource={data}
-        onChange={onChange}
+        dataSource={mstate.projects}
+
       />
     </div>
   );
